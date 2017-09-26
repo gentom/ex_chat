@@ -25,7 +25,7 @@ defmodule Exchat.User do
   validate_formatは、"email"に"@"が含まれているかバリデーション
   validate_lengthは、"password"が5文字以上であるかバリデーション
   """
-  def changeset(model, params \\ :empty) do
+  def changeset(model, params \\ %{}) do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> update_change(:email, &String.downcase/1)
