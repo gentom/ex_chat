@@ -22,6 +22,10 @@ defmodule Exchat.Router do
     get "/", PageController, :index
     # "GET /hello"にアクセスすると、HelloControllerのindexアクションが呼ばれる
     get "/hello", HelloController, :index
+
+    # 登録画面表示(new)と登録処理(create)
+    get "/register", RegistrationController, :new
+    get "/register", RegistrationController, :create
   end
 
   # Other scopes may use custom stacks.
