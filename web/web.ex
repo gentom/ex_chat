@@ -52,6 +52,8 @@ defmodule Exchat.Web do
       import Exchat.Router.Helpers
       import Exchat.ErrorHelpers
       import Exchat.Gettext
+      # Sessionモジュールのcurrent_userとlogged_in?をWebのViewに追加
+      import Exchat.Session, only: [current_user: 1, logged_in?: 1]
     end
   end
 

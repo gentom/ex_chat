@@ -13,15 +13,18 @@
 
   <body>
     <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <!-- registration_pathはヘルパーメソッドで、"GET /register"に変換される -->
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <%= if logged_in?(@conn) do %>
+            <li><%= current_user(@conn).email %></li>
+            <li><%= link "ログアウト", to: session_path(@conn, :delete), method: :delete %></li>
+          <% else %>
             <li><%= link "ユーザ登録", to: registration_path(@conn, :new) %></li>
-          </ul>
-        </nav>
+            <li><%= link "ログイン", to: session_path(@conn, :new) %></li>
+          <% end %>
+        </ul>
         <span class="logo"></span>
-      </header>
+      </div>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
