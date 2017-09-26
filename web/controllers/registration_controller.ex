@@ -24,6 +24,7 @@ defmodule Exchat.RegistrationController do
             {:ok, user} ->
                 # バリデーションに成功した場合、userレコードを作成し、ログインし、"/"にリダイレクト
                 conn
+                |> put_session(:current_user, user.id)
                 |> put_flash(:info, "ようこそ" <> changeset.params["email"])
                 |> redirect(to: "/")
             {:error, changeset} -> 

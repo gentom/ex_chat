@@ -8,7 +8,7 @@ defmodule Exchat.Session do
     authenticateが成功すれば、{:ok, user}を返し、失敗すれば:errorを返します
     """
     def login(params, repo) do
-        user = repo.get_by(User, email: String.downcase(param["email"]))
+        user = repo.get_by(User, email: String.downcase(params["email"]))
         case authenticate(user, params["password"]) do
             true -> {:ok, user}
             _    -> :error 

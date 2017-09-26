@@ -19,7 +19,7 @@ defmodule Exchat.SessionController do
             {:ok, user} ->
                 conn
                 |> put_session(:current_user, user.id)
-                |> put_flash(:info, "やぁ!" <> changeset.params["email"])
+                |> put_flash(:info, "ログインしました")
                 |> redirect(to: "/")
             # errorの場合、ログイン画面を再表示する
             :error ->
