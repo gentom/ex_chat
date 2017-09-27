@@ -36,6 +36,8 @@ defmodule Exchat.Web do
 
       import Exchat.Router.Helpers
       import Exchat.Gettext
+      # Sessionモジュールのcurrent_userとlogged_in?をWebのcontrollerに追加
+      import Exchat.Session, only: [current_user: 1, logged_in?: 1]
     end
   end
 
@@ -60,6 +62,8 @@ defmodule Exchat.Web do
   def router do
     quote do
       use Phoenix.Router
+      # Sessionモジュールのcurrent_userとlogged_in?をWebのviewに追加
+      import Exchat.Session, only: [current_user: 1, logged_in?: 1]
     end
   end
 

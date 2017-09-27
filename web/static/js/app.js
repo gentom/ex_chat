@@ -19,3 +19,6 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+// web/static/js/my_socket.js をインポート
+import "./my_socket"
