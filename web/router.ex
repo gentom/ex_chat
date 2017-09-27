@@ -7,7 +7,6 @@ defmodule Exchat.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    // ブラウザの場合、ユーザーのトークンを設定
     plug :put_user_token
   end
 
@@ -35,7 +34,7 @@ defmodule Exchat.Router do
     delete "/logout", SessionController, :delete
   end
 
-  // ログインしている場合、user_tokenキーにユーザーのトークンを設定します
+  # ログインしている場合、user_tokenキーにユーザーのトークンを設定します
   defp put_user_token(conn, _) do
     if logged_in?(conn) do
       token = Phoenix.Token.sign(conn, "user", current_user(conn).id)
